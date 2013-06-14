@@ -1,0 +1,13 @@
+<html>
+<head>
+<ul>
+{% for scroll in scrolls %}
+    <li>
+        <a href="{{ scroll.url }}" target="_blank">{{ scroll.title }}</a>
+        <span>{{scroll.note }}</span>
+    </li>
+{% endfor %}
+</ul>
+</head>
+
+</html>
