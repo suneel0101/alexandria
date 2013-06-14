@@ -2,7 +2,14 @@ from flask import Flask, render_template, request, jsonify
 from flask.ext.sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/alexandria'
+try:
+    import local
+except ImportError:
+    database_uri = 'postgres://zhzedposyksntm:y0z-CL5VAco4F435rANcjKCP4J@ec2-50-19-228-92.compute-1.amazonaws.com:5432/dbiluoimpi9cd6'
+else:
+    database_uri = local.DATABASE_URI
+
+app.config['SQLALCHEMY_DATABASE_URI'] = database_uri
 
 db = SQLAlchemy(app)
 
